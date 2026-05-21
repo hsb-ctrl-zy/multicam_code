@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Main Page</h1>
+        <!-- 로그인한 유저의 이름을 대입 -->
+        <!-- app.py에서 render_template() 함수가 사용할 수 있도록 만든 name 변수를 대입 -->
+        <p>{{name}}님 안녕하세요!</p>
+
+        <!-- 그래프가 그려지는 영역을 먼저 선택 -->
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <!-- 외부의 라이브러리를 호출 -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- 실제 그래프를 canvas에 그려주는 부분 -->
+        <script>
+            // id가 myChart인 태그를 선택해서 상수 ctx에 대입
+            // 변수는 let이나 var를 이용하여 변수를 생성
+          const ctx = document.getElementById('myChart');
+
+        //   Chart class를 생성 → 그래프를 그려주는 부분
+        new Chart(
+            ctx,        // 어디에 그래프를 그릴 것인가
+            {
+            type: 'line',    // 그래프의 종류
+            data: {         // x, y 축의 데이터를 입력
+            labels: {{x | tojson}},     // x축의 데이터
+            datasets: [{                        // y축의 데이터들 → [{y축 데이터 1}, {y축 데이터2}, ...]
+                label: '# of Votes',            // y축 데이터의 이름
+                data: {{y | tojson}},     // y축의 데이터
+                borderWidth: 1                  // 테두리 선의 두께
+            }]
+         },
+        // options: {              // 그래프의 부가 설정
+        //   scales: {
+        //     y: {
+        //   beginAtZero: true     // y축의 범위를 0부터 시작할것인가?
+        //     }
+        //   }
+        // }
+      });
+    </script>
+
+    <!-- 표를 생성 -->
+    <!-- table 태그, tr 태그: 행을 표시, th/td 태그: 열을 표시 -->
+    <table border = 1>
+        <tr>
+            <!--
+                반복문을 이용해서 작업을 하면 짧고 유동성 있게 사용 가능
+                python에서 for문은 들여쓰기를 요함 
+             -->
+            <!-- 그래서 필요한 반복문의 시작과 -->
+            {% for col in th_data%}
+                <th>{{col}}</th>
+            <!-- 반복문의 끝 -->
+            {% endfor %}
+        </tr>
+
+
+        {% for row in td_data %}
+        <tr>
+            {% for col in th_data %}
+                <td>{{row[col]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
