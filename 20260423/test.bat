@@ -1,0 +1,1 @@
+python C:\Users\hkssn\OneDrive\바탕 화면\multicam\20260423\news_crawlling.py
