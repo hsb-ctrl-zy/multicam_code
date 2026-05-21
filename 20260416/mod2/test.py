@@ -1,0 +1,1 @@
+test_vari = 'mod2 폴더 안에 test.py 데이터'
