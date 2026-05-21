@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GA Test</title>
+    {% include 'ga.html' %}
+    <!-- ga에게 보낼 이벤트 함수 생성 -->
+    <script>
+        function event1(){
+            gtag('event', 'button_click', {
+                'message': 'event1'
+            })
+        }
+        function event2(kind){
+            gtag('event2', '중국집 난제', {
+                '메뉴': kind
+            })
+            // 팝업창 띄우기
+            alert(kind)
+        }
+    </script>
+</head>
+<body>
+    <h1>GA TEST</h1>
+    <!-- event1 함수를 호출하는 버튼 생성 -->
+    <button onclick = "event1()">이벤트 버튼</button>
+    <!-- 짜장인가, 짬뽕인가 -->
+    <h3>짜장인가, 짬뽕인가</h3>
+    <button onclick="event2('짜장')">짜장</button>
+    <button onclick="event2('짬뽕')">짬뽕</button>
+</body>
+</html>
