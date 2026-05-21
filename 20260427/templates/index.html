@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- title 태그는 탭에 나타나는 이름 -->
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 실제 화면에 나타나는 부분 -->
+         <h1>Hello Flask</h1>
+         <p>이 페이지는 메인 페이지입니다.</p>
+        <!-- 유저가 입력할 수 있는 공간 생성(input) -->
+        <!-- 입력한 데이터를 서버에게 보낸다(form) -->
+        <!-- form 태그: action 속성-어디로 데이터를 보낼 것인가?(주소값) -->
+        <!-- method 속성-어떤 방식으로 데이터를 보낼 것인가? (get/post) -->
+        <!-- 웹 서버의 데이터를 key: value 형태로 보낸다. -->
+        <form action="/login" method="get">
+            <!-- 유저의 id 입력하는 공간 -->
+            <label>ID</label>
+            <!-- input 태그: type 속성-유저가 입력하는 데이터의 타입 -->
+            <!-- name 속성-유저가 입력한 데이터의 key 값 -->
+            <!-- input_id : 유저가 입력한 id -->
+            <input type="text" name='input_id'>
+            <br>
+            <!-- 유저의 password 입력하는 공간 -->
+            <label>PASSWORD</label>
+            <input type="password" name="input_pass">
+            <br>
+            <!-- 데이터를 보낸다 → 제출 버튼이 필요 -->
+            <input type="submit">
+        </form>
+        <h3>post 방식으로 데이터 보내기 </h3>
+        <!-- post 방식으로 데이터를 보낸다. -->
+         <form action="/login2" method = "post">
+            <!-- 유저의 id 입력하는 공간 -->
+            <label>ID</label>
+            <!-- input 태그: type 속성-유저가 입력하는 데이터의 타입 -->
+            <!-- name 속성-유저가 입력한 데이터의 key 값 -->
+            <!-- input_id : 유저가 입력한 id -->
+            <input type="text" name='input_id'>
+            <br>
+            <!-- 유저의 password 입력하는 공간 -->
+            <label>PASSWORD</label>
+            <input type="password" name="input_pass">
+            <br>
+            <!-- 데이터를 보낸다 → 제출 버튼이 필요 -->
+             <input type="submit">
+         </form>
+    </body>
+</html>
